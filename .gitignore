@@ -7,6 +7,12 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore vagrant process files
+/.vagrant
+
+# Ignore application sensitive configuration
+/config/application.yml
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
@@ -14,6 +20,3 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-
-# Ignore vagrant process files
-/.vagrant
