@@ -15,6 +15,13 @@ describe QuizzesController, type: :controller do
         expect{ get :show, id: 999 }.to raise_error ActiveRecord::RecordNotFound
       end
     end
+    context "unpublished quiz", focus: true do
+      it "raise ActiveRecord::RecordNotFound" do
+        quiz = create(:quiz)
+        quiz.update_attribute(:published, false)
+        expect{ get :show, id: quiz.id }.to raise_error ActiveRecord::RecordNotFound
+      end
+    end
   end
 
 end
