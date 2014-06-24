@@ -58,3 +58,4 @@ group :test do
 end
 
 gem 'slim-rails'
+gem 'bcrypt-ruby'
