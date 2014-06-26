@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe QuizzesController, type: :controller do
+describe TryoutsController, type: :controller do
 
   describe "GET 'show'" do
     context "valid quiz" do
