@@ -1,6 +1,5 @@
 class TryoutsController < ApplicationController
-  def show
-    @quiz = Quiz.find(params[:id])
-    raise ActiveRecord::RecordNotFound unless @quiz.published
+  def new
+    @quiz = Quiz.first
   end
 end
