@@ -1,2 +1,2 @@
 db_password:
-secret_key_base:
+SECRET_KEY_BASE:
