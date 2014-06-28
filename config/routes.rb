@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'profile/index', as: 'profile'
+
   resources :tryouts, only: [:new]
   resources :sessions, only: [:new, :create] do
     collection { get :destroy, as: :destroy }
