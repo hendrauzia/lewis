@@ -8,4 +8,8 @@ describe "Sessions", type: :routing do
   it 'routes to POST sessions_path' do
     expect(post: sessions_path).to be_routable
   end
+
+  it 'routes to GET destroy_session_path' do
+    expect(GET: destroy_sessions_path).to be_routable
+  end
 end

@@ -27,4 +27,17 @@ describe SessionsController, type: :controller do
     end
   end
 
+  describe "GET 'destroy'" do
+    before { session[:user_id] = 999 }
+
+    it "remove user session" do
+      get 'destroy'
+      expect(session[:user_id]).to eq(nil)
+    end
+
+    it "redirected to new tryout page" do
+      expect(get 'destroy').to redirect_to(new_tryout_path)
+    end
+  end
+
 end

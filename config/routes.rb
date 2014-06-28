@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :tryouts, only: [:new]
-  resources :sessions, only: [:new, :create]
+  resources :sessions, only: [:new, :create] do
+    collection { get :destroy, as: :destroy }
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
