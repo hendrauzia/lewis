@@ -9,10 +9,10 @@ describe Scholarship, type: :model do
 
   describe ".determine" do
     before do
-      @stupid  = create(:scholarship, :stupid)
-      @average = create(:scholarship, :average)
-      @smart   = create(:scholarship, :smart)
-      @genius  = create(:scholarship, :genius)
+      @stupid  = Scholarship.find_by_score(0)
+      @average = Scholarship.find_by_score(50)
+      @smart   = Scholarship.find_by_score(75)
+      @genius  = Scholarship.find_by_score(100)
     end
 
     context "unqualified" do
