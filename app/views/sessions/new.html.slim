@@ -1,0 +1,12 @@
+h1 Silahkan Masuk
+- if notice = flash[:notice]
+  .notice = notice
+= form_tag action: 'create' do
+  .form-field
+    label Email
+    = text_field_tag :email
+  .form-field
+    label Password
+    = password_field_tag :password
+  = submit_tag 'Login'
+
