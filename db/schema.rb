@@ -11,11 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140627145622) do
+ActiveRecord::Schema.define(version: 20140628005838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+
+  create_table "families", force: true do |t|
+    t.integer  "student_id"
+    t.integer  "parent_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "families", ["parent_id"], name: "index_families_on_parent_id", using: :btree
+  add_index "families", ["student_id"], name: "index_families_on_student_id", using: :btree
 
   create_table "quizzes", force: true do |t|
     t.string   "name"
