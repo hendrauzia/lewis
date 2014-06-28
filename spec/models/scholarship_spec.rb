@@ -19,6 +19,9 @@ describe Scholarship, type: :model do
       it "doesn't qualify scholarship" do
         expect(Scholarship.determine(@average.score - 1).id).to be(@stupid.id)
       end
+      it "has invalid score" do
+        expect(Scholarship.determine(-1).id).to be(@stupid.id)
+      end
     end
 
     context "qualified" do

@@ -4,6 +4,7 @@ class Scholarship < ActiveRecord::Base
 
   class << self
     def determine(value)
+      value = 0 if value < 0
       where(score: 0..value).order(score: :desc).first
     end
   end
