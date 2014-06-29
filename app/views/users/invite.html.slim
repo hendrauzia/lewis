@@ -1,0 +1,18 @@
+h1 Invitation
+= form_tag action: 'update', method: 'patch'
+  .form_field
+    label Email
+    = text_field_tag :email, @parent.email, disabled: true
+  .form_field
+    label First Name
+    = text_field_tag :first_name
+  .form_field
+    label Last Name
+    = text_field_tag :last_name
+  .form_field
+    label Password
+    = password_field_tag :password
+  .form_field
+    label Password Confirmation
+    = password_field_tag :password_confirmation
+  = submit_tag "Kirim"

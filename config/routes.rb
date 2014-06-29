@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'users/invite', as: 'invite_user'
+  patch 'users/update', as: 'update_user'
+
   get 'profile/index', as: 'profile'
   get 'profile/share', as: 'share_profile'
   post 'profile/notify', as: 'notify_profile'
