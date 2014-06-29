@@ -1,0 +1,10 @@
+h1 Share Result
+= form_tag action: 'notify' do
+  .form-field
+    .label
+      | Email
+      = text_field_tag :email
+  .form-field
+    = hidden_field_tag :student_id, @student.id
+  = submit_tag 'Share'
+

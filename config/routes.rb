@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get 'profile/index', as: 'profile'
+  get 'profile/share', as: 'share_profile'
+  post 'profile/notify', as: 'notify_profile'
 
   resources :tryouts, only: [:new]
   resources :sessions, only: [:new, :create] do
