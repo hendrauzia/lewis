@@ -3,3 +3,11 @@
 <hr />
 <p>Jumlah tryout yang sudah diambil: <%= @student.tryouts.count %> tryout</p>
 <p>Beasiswa yang didapat: <%= @student.discount * 100 %>%</p>
+<hr />
+<h2>Tryout</h2>
+<ol>
+  <% @student.tryouts.each do |tryout| %>
+    <li>Skor: <%= tryout.score %> diambil pada tanggal <%= tryout.created_at %></li>
+  <% end %>
+</ol>
+
