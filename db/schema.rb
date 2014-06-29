@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140628095922) do
+ActiveRecord::Schema.define(version: 20140628152359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "families", force: true do |t|
     t.integer  "student_id"
@@ -50,6 +51,7 @@ ActiveRecord::Schema.define(version: 20140628095922) do
     t.integer  "score"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "discount"
   end
 
   add_index "tryouts", ["quiz_id"], name: "index_tryouts_on_quiz_id", using: :btree

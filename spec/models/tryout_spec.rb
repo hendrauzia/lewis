@@ -3,11 +3,10 @@ require 'rails_helper'
 describe Tryout, type: :model do
   it { is_expected.to have_db_column(:answers) }
   it { is_expected.to have_db_column(:score) }
+  it { is_expected.to have_db_column(:discount) }
 
   it { is_expected.to belong_to(:student) }
   it { is_expected.to belong_to(:quiz) }
-
-  it { is_expected.to validate_numericality_of(:score).is_greater_than_or_equal_to(0).is_less_than_or_equal_to(100).only_integer }
 
   before do
     @tryout = Tryout.new
@@ -62,6 +61,13 @@ describe Tryout, type: :model do
       @tryout.save
 
       expect(@tryout.score).to_not be_nil
+    end
+
+    it "determine scholarship" do
+      @tryout.answers = { "1" => "b", "2" => "a", "3" => "d" }
+      @tryout.save
+
+      expect(@tryout.discount).to_not be_nil
     end
   end
 end
