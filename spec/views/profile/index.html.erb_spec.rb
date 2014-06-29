@@ -28,8 +28,11 @@ describe "profile/index.html.erb", type: :view do
       expect(rendered).to have_content("#{@student.tryouts.count} tryout")
     end
 
-    pending "see scholarship"
     pending "see list of tryout scores"
+    it "see scholarship" do
+      render
+      expect(rendered).to have_content("Beasiswa yang didapat: #{@student.discount * 100}%")
+    end
   end
 
   context "parent" do

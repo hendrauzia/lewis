@@ -2,6 +2,7 @@ class ProfileController < ApplicationController
   before_action :authenticate
 
   def index
-    @user = User.find(session[:user_id])
+    @student = Student.find(session[:user_id])
+    @user = @student
   end
 end
