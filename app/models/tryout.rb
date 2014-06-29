@@ -6,14 +6,15 @@ class Tryout < ActiveRecord::Base
 
   before_validation :examine
 
-  def examine
-    return unless score.nil?
+  def examine(answers = self.answers)
+    return unless self.score.nil?
 
+    self.answers = answers
     quiz_answers = quiz.answers
 
-    correct= 0
+    correct = 0
     total = quiz_answers.count
-    quiz_answers.each { |i, answer| correct+= 1 if answers[i].eql? answer }
+    quiz_answers.each { |i, answer| correct+= 1 if self.answers[i].eql? answer }
 
     self.score = (correct.to_f / total.to_f * 100).to_i
   end

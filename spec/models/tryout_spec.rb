@@ -19,44 +19,38 @@ describe Tryout, type: :model do
   describe "#examine" do
     context "has been examined" do
       it "doesn't re-examine" do
-        @tryout.answers = { "1" => "a", "2" => "c", "3" => "c" }
-        @tryout.examine
+        @tryout.examine({ "1" => "a", "2" => "c", "3" => "c" })
         expect(@tryout.score).to eq(66)
 
-        @tryout.answers = { "1" => "a", "2" => "c", "3" => "b" }
-        @tryout.examine
+        @tryout.examine({ "1" => "a", "2" => "c", "3" => "b" })
         expect(@tryout.score).to eq(66)
       end
     end
 
     context "no score" do
       it "returns no score" do
-        @tryout.answers = { "1" => "b", "2" => "a", "3" => "d" }
-        @tryout.examine
+        @tryout.examine({ "1" => "b", "2" => "a", "3" => "d" })
         expect(@tryout.score).to eq(0)
       end
     end
 
     context "rounded down score" do
       it "returns rounded down score" do
-        @tryout.answers = { "1" => "a", "2" => "c", "3" => "c" }
-        @tryout.examine
+        @tryout.examine({ "1" => "a", "2" => "c", "3" => "c" })
         expect(@tryout.score).to eq(66)
       end
     end
 
     context "perfect score" do
       it "returns perfect score" do
-        @tryout.answers = { "1" => "a", "2" => "c", "3" => "b" }
-        @tryout.examine
+        @tryout.examine({ "1" => "a", "2" => "c", "3" => "b" })
         expect(@tryout.score).to eq(100)
       end
     end
 
     context "overflown tryout answers" do
       it "examines the first n quiz answers on tryout answers and ignores the rest" do
-        @tryout.answers = { "1" => "a", "2" => "c", "3" => "b", "4" => "d" }
-        @tryout.examine
+        @tryout.examine({ "1" => "a", "2" => "c", "3" => "b", "4" => "d" })
         expect(@tryout.score).to eq(100)
       end
     end
