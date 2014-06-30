@@ -1,3 +1,5 @@
+- if authenticated?
+  = link_to "Profile", profile_path
 h1 = @quiz.name
 p = @quiz.description
 
@@ -11,8 +13,9 @@ p = @quiz.description
             li
               = radio_button_tag "answers[#{number}]", value
               span = text
-  .form_field
-    label Email
-    = text_field_tag :email
+  - unless authenticated?
+    .form_field
+      label Email
+      = text_field_tag :email
   = submit_tag 'Kirim'
 
