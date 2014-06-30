@@ -4,13 +4,14 @@
   <p><%= flash[:notice] %></p>
 <% end %>
 <hr />
-<p>Jumlah tryout yang sudah diambil: <%= @student.tryouts.count %> tryout</p>
-<p>Beasiswa yang didapat: <%= @student.discount * 100 %>% <%= link_to "Bagikan ke orang tua kamu", share_profile_path %></p>
-<hr />
-<h2>Tryout</h2>
-<ol>
-  <% @student.tryouts.each do |tryout| %>
-    <li>Skor: <%= tryout.score %> diambil pada tanggal <%= tryout.created_at %></li>
-  <% end %>
-</ol>
-
+<% if @user.type.eql?("Student") %>
+  <p>Jumlah tryout yang sudah diambil: <%= @student.tryouts.count %> tryout</p>
+  <p>Beasiswa yang didapat: <%= @student.discount * 100 %>% <%= link_to "Bagikan ke orang tua kamu", share_profile_path %></p>
+  <hr />
+  <h2>Tryout</h2>
+  <ol>
+    <% @student.tryouts.each do |tryout| %>
+      <li>Skor: <%= tryout.score %> diambil pada tanggal <%= tryout.created_at %></li>
+    <% end %>
+  </ol>
+<% end %>

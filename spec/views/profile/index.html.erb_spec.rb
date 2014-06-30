@@ -40,6 +40,16 @@ describe "profile/index.html.erb", type: :view do
   end
 
   context "parent" do
+    before do
+      @parent = create(:parent)
+      @user = @parent
+    end
+
+    it "doesn't see total tryout" do
+      render
+      expect(rendered).to_not have_content("tryout")
+    end
+
     pending "see list of childrens"
     pending "see children's scholarship"
   end

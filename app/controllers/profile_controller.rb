@@ -21,7 +21,8 @@ class ProfileController < ApplicationController
   end
 
   def get_user
-    @student = Student.find(session[:user_id])
-    @user = @student
+    @user = User.find(session[:user_id])
+    @student = Student.find(@user.id) if @user.type.eql?("Student")
+    @parent = Parent.find(@user.id) if @user.type.eql?("Parent")
   end
 end
