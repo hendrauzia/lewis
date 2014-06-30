@@ -1,8 +1,9 @@
 h1 Invitation
-= form_tag action: 'update', method: 'patch'
+= form_tag action: 'update'
+  = hidden_field_tag '_method', 'patch'
   .form_field
     label Email
-    = text_field_tag :email, @user.email, disabled: true
+    = text_field_tag :email, @user.email
   .form_field
     label First Name
     = text_field_tag :first_name

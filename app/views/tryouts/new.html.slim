@@ -1,14 +1,18 @@
 h1 = @quiz.name
 p = @quiz.description
 
-ol
-  - @quiz.questions.each do |number, question|
-    li
-      span = question["description"]
-      ul
-        - question["options"].each do |value, text|
-          li
-            = radio_button_tag "tryout[#{number}]", value
-            span = text
-= submit_tag 'Kirim'
+= form_tag action: 'create' do
+  ol
+    - @quiz.questions.each do |number, question|
+      li
+        span = question["description"]
+        ul
+          - question["options"].each do |value, text|
+            li
+              = radio_button_tag "answers[#{number}]", value
+              span = text
+  .form_field
+    label Email
+    = text_field_tag :email
+  = submit_tag 'Kirim'
 

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'profile/share', as: 'share_profile'
   post 'profile/notify', as: 'notify_profile'
 
-  resources :tryouts, only: [:new]
+  resources :tryouts, only: [:new, :create]
   resources :sessions, only: [:new, :create] do
     collection { get :destroy, as: :destroy }
   end

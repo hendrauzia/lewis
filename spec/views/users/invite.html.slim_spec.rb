@@ -6,6 +6,6 @@ describe "users/invite.html.slim", type: :view do
     assign(:user, parent)
     render
 
-    expect(Capybara.string(rendered)).to have_field(:email, with: parent.email, disabled: true)
+    expect(Capybara.string(rendered)).to have_field(:email, with: parent.email)
   end
 end
