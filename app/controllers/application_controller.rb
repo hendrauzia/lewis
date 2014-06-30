@@ -6,6 +6,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def authenticate
-    redirect_to new_session_path unless authenticated
+    redirect_to new_session_path unless authenticated?
   end
 end

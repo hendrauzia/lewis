@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def authenticated
+  def authenticated?
     return !session[:user_id].nil?
   end
 end
