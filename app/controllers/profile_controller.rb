@@ -12,6 +12,8 @@ class ProfileController < ApplicationController
       parent = Parent.new
       parent.update_attribute(:email, params[:email])
 
+      Family.create(student_id: @student.id, parent_id: parent.id)
+
       flash[:notice] = "Hasil kamu sudah di share"
     else
       flash[:notice] = "Email sudah terdaftar"

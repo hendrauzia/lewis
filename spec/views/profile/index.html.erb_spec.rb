@@ -41,8 +41,11 @@ describe "profile/index.html.erb", type: :view do
 
   context "parent" do
     before do
+      @student = create(:student)
       @parent = create(:parent)
-      @user = @parent
+      @family = Family.create(student_id: @student.id, parent_id: @parent.id)
+
+      assign(:user, @parent)
     end
 
     it "doesn't see total tryout" do
@@ -50,7 +53,14 @@ describe "profile/index.html.erb", type: :view do
       expect(rendered).to_not have_content("tryout")
     end
 
-    pending "see list of childrens"
-    pending "see children's scholarship"
+    it "see list of childrens" do
+      render
+      expect(rendered).to have_content(@family.student.first_name)
+    end
+
+    it "see children's scholarship" do
+      render
+      expect(rendered).to have_content("#{@family.student.discount * 100}%" )
+    end
   end
 end
