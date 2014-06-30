@@ -13,16 +13,30 @@ describe SessionsController, type: :controller do
     before { @user = create(:user) }
 
     context "valid" do
-      it "save session" do
+      before do
         post 'create', email: @user.email, password: "password"
+      end
+
+      it "save session" do
         expect(session[:user_id]).to eq(@user.id)
+      end
+
+      it "redirect to profile" do
+        expect(response).to redirect_to(profile_path)
       end
     end
 
     context "invalid" do
-      it "doesn't save session" do
+      before do
         post 'create', email: @user.email, password: "invalid password"
+      end
+
+      it "doesn't save session" do
         expect(session[:user_id]).to eq(nil)
+      end
+
+      it "redirect to login" do
+        expect(response).to redirect_to(new_session_path)
       end
     end
   end
@@ -36,7 +50,7 @@ describe SessionsController, type: :controller do
     end
 
     it "redirected to new tryout page" do
-      expect(get 'destroy').to redirect_to(new_tryout_path)
+      expect(get 'destroy').to redirect_to(new_session_path)
     end
   end
 

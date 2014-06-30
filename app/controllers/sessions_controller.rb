@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     else
       if user.authenticate(params[:password])
         session[:user_id] = user.id
-        redirect_to new_tryout_path
+        redirect_to profile_path
       else
         flash[:notice] = "Password salah"
         redirect_to new_session_path
@@ -20,6 +20,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete(:user_id)
-    redirect_to new_tryout_path
+    redirect_to new_session_path
   end
 end
