@@ -4,13 +4,13 @@ class UsersController < ApplicationController
   def invite; end
 
   def update
-    @parent.first_name = params[:first_name]
-    @parent.last_name = params[:last_name]
-    @parent.password = params[:password]
-    @parent.password_confirmation = params[:password_confirmation]
+    @user.first_name = params[:first_name]
+    @user.last_name = params[:last_name]
+    @user.password = params[:password]
+    @user.password_confirmation = params[:password_confirmation]
 
-    if @parent.save
-      session[:user_id] = @parent.id
+    if @user.save
+      session[:user_id] = @user.id
       redirect_to profile_path
     else
       redirect_to invite_user_path
@@ -18,6 +18,6 @@ class UsersController < ApplicationController
   end
 
   def get_user
-    @parent = Parent.find_by_email!(params[:email])
+    @user = User.find_by_email!(params[:email])
   end
 end
