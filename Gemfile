@@ -57,3 +57,5 @@ end
 
 gem 'slim-rails'
 gem 'bcrypt-ruby'
+gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'devise'
