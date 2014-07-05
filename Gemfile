@@ -60,3 +60,4 @@ gem 'activeadmin', github: 'hendrauzia/active_admin', branch: 'fix-jquery-ui-ass
 gem 'devise'
 
 gem "codeclimate-test-reporter", group: :test, require: nil
+gem 'coveralls', require: false
