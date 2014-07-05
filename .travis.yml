@@ -2,8 +2,11 @@ language: ruby
 rvm:
   - 2.1.2
 addons:
-  postgresql: "9.3"
+  postgresql: '9.3'
 before_script:
   - cp config/database.yml.travis config/database.yml
   - bundle exec rake db:setup
 script: bundle exec rspec spec
+env:
+  global:
+    secure: LoN5PPHf1uYzDxt3W7CvZHd2zq/A5Tlis7mX5e/GNr1hAJ71TDy+aeoyfMJgCYem6qaupp1+PS6NfDqekSZ6gfwwrHGO3JqdENLvoZF4chNTP2P4WrvT3RBqdVFQENctO5Ff6jEXjQLX165k/njPj/raUpQLWjIYP7X/0GgZzYM=

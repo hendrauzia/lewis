@@ -58,3 +58,5 @@ gem 'slim-rails'
 gem 'bcrypt-ruby'
 gem 'activeadmin', github: 'hendrauzia/active_admin', branch: 'fix-jquery-ui-assets'
 gem 'devise'
+
+gem "codeclimate-test-reporter", group: :test, require: nil
