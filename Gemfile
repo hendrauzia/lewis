@@ -56,5 +56,5 @@ end
 
 gem 'slim-rails'
 gem 'bcrypt-ruby'
-gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'activeadmin', github: 'hendrauzia/active_admin', branch: 'fix-jquery-ui-assets'
 gem 'devise'

@@ -1,6 +1,7 @@
 GIT
-  remote: git://github.com/gregbell/active_admin.git
-  revision: 8ec04cfbf8fd23093815a939f19f82b2b8079fd1
+  remote: git://github.com/hendrauzia/active_admin.git
+  revision: 1c5781195d88b948c34d5d2a2be86aecbbb30b0f
+  branch: fix-jquery-ui-assets
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0)
