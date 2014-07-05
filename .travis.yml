@@ -3,11 +3,13 @@ rvm:
   - 2.1.2
 addons:
   postgresql: '9.3'
+  code_climate:
+    repo_token:
+      secure: gpkuk6A+8jw+Il6p2HMZ0KeMHCI0opUqE8/VzOnUkGx643QWiqgXiPTt9SgqThzDevfU/HUHbYfhtSIJbIJpfk9EJ/9eqAQHpXN6axrSlaGzF/pZtJ6hqc1niKAIZrs3yawpDUMebThkX4ZICta0e5mPkmAJllNY8rnK0eRxi3s=
 before_script:
   - cp config/database.yml.travis config/database.yml
   - bundle exec rake db:setup
 script: bundle exec rspec spec
 env:
   global:
-    - secure: LoN5PPHf1uYzDxt3W7CvZHd2zq/A5Tlis7mX5e/GNr1hAJ71TDy+aeoyfMJgCYem6qaupp1+PS6NfDqekSZ6gfwwrHGO3JqdENLvoZF4chNTP2P4WrvT3RBqdVFQENctO5Ff6jEXjQLX165k/njPj/raUpQLWjIYP7X/0GgZzYM=
     - secure: zXXSUWi3nHooUUtad1F13NytA1MY6iosCjj1FXALRgsjEUg1iuTZd0iTYXDWZALWr9dniTWYK8ix2/soCNS2L2E+Pup5X73NZXc7mnGLGtYXxShbz/9pAk1oaE/0+SFPI3E2M5Tx6vSQqhXDfIS3+Wb6pnNdm9Pmf7swziuZJAs=
