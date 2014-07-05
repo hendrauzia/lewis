@@ -1,15 +1,15 @@
 language: ruby
 rvm:
-  - 2.1.2
+- 2.1.2
 addons:
   postgresql: '9.3'
   code_climate:
     repo_token:
-      secure: gpkuk6A+8jw+Il6p2HMZ0KeMHCI0opUqE8/VzOnUkGx643QWiqgXiPTt9SgqThzDevfU/HUHbYfhtSIJbIJpfk9EJ/9eqAQHpXN6axrSlaGzF/pZtJ6hqc1niKAIZrs3yawpDUMebThkX4ZICta0e5mPkmAJllNY8rnK0eRxi3s=
+      secure: SEMurEAFPYHZCi/ZFfY/nLB+SDYUVoz8gWnLH6jVPrpS3RLoK8vvM4PutdX8URCet30+xRYGHWd7NQ2QDc2nL1IWMWoj9cyZ+Sc/+JeHAmtsOyVJl/yJ6MHSYqN7iRYnUwx31NH650yfzy/bRWHmGhK9CkM7J1LWsxpQ/P7Yqgc=
 before_script:
-  - cp config/database.yml.travis config/database.yml
-  - bundle exec rake db:setup
+- cp config/database.yml.travis config/database.yml
+- bundle exec rake db:setup
 script: bundle exec rspec spec
 env:
   global:
-    - secure: zXXSUWi3nHooUUtad1F13NytA1MY6iosCjj1FXALRgsjEUg1iuTZd0iTYXDWZALWr9dniTWYK8ix2/soCNS2L2E+Pup5X73NZXc7mnGLGtYXxShbz/9pAk1oaE/0+SFPI3E2M5Tx6vSQqhXDfIS3+Wb6pnNdm9Pmf7swziuZJAs=
+  - secure: TROUE2OfEoMMjlfoiA54NRxwSq6//WH+Ph2LGMWtmnZvE0X5VK0uROTwi+bl3zVr9Zzq+Q5oa90iZUJdW5gBwJq8bJ0htOkNajSlTVGrhHun83T/kc2DLjgiZ2y66F8b0hnnJDSO4c75GDU2k0sZNOuHOOWqvYfE8+Q83Ah+plQ=
