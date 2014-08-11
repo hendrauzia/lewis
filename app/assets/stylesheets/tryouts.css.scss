@@ -1,0 +1,21 @@
+.app {
+  .title { margin-top: 30px; }
+  .questions {
+    list-style-type: decimal;
+    margin-left: 15px;
+
+    .item {
+      margin-bottom: 10px;
+
+      input[type=radio] { margin-right: 7px; }
+    }
+  }
+
+  #email {
+    width: auto;
+    margin-left: 7px;
+  }
+
+  .form_field { margin-bottom: 15px; }
+}
+

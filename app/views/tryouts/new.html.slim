@@ -2,13 +2,13 @@
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 - if authenticated?
   = link_to "Profile", profile_path
-h1 = @quiz.name
+h1.title = @quiz.name
 p = @quiz.description
 
 = form_tag action: 'create' do
-  ol
+  ol.questions
     - @quiz.questions.each do |number, question|
-      li
+      li.item
         span = question["description"]
         ul
           - question["options"].each do |value, text|
