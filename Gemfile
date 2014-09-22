@@ -52,12 +52,12 @@ group :development, :test do
   gem 'capybara'
   gem 'shoulda-matchers', require: false
   gem 'launchy'
+  gem "codeclimate-test-reporter", require: nil
+  gem 'coveralls', require: false
 end
 
 gem 'slim-rails'
 gem 'bcrypt-ruby'
-gem 'activeadmin', github: 'hendrauzia/active_admin', branch: 'fix-jquery-ui-assets'
+gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
 
-gem "codeclimate-test-reporter", group: :test, require: nil
-gem 'coveralls', require: false
