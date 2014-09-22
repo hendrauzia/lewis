@@ -4,7 +4,8 @@ class Tryout < ActiveRecord::Base
 
   before_validation :examine, :determine_scholarship
 
-  def examine(answers = self.answers)
+  protected
+  def examine
     return unless self.score.nil?
     return if self.quiz.nil?
 

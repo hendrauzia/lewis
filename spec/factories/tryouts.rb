@@ -1,6 +1,5 @@
 FactoryGirl.define do
   factory :tryout do
-    quiz
     answers Hash[]
 
     trait :no_score do
