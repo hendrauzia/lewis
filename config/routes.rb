@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: 'tryouts#new'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   get 'users/invite', as: 'invite_user'
