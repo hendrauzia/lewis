@@ -54,6 +54,8 @@ group :development, :test do
   gem 'launchy'
   gem "codeclimate-test-reporter", require: nil
   gem 'coveralls', require: false
+  gem 'guard-rspec', require: false
+  gem 'terminal-notifier-guard'
 end
 
 gem 'slim-rails'
