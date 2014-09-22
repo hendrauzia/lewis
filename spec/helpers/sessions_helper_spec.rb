@@ -1,4 +1,4 @@
 require 'rails_helper'
 
-describe SessionsHelper, type: :helper do
+describe SessionsHelper do
 end

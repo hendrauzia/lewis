@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "tryouts/new.html.slim", type: :view do
+describe "tryouts/new.html.slim" do
   before do
     @quiz = build(:quiz)
     @quiz.description = "Some quiz description in here"

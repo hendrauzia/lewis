@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Tryout, type: :model do
+describe Tryout do
   it { is_expected.to have_db_column(:answers) }
   it { is_expected.to have_db_column(:score) }
   it { is_expected.to have_db_column(:discount) }

@@ -1,4 +1,4 @@
 require 'rails_helper'
 
-describe UsersHelper, type: :helper do
+describe UsersHelper do
 end

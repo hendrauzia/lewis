@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Scholarship, type: :model do
+describe Scholarship do
   it { is_expected.to have_db_column(:score).of_type(:integer) }
   it { is_expected.to have_db_column(:discount).of_type(:float) }
 

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "profile/index.html.erb", type: :view do
+describe "profile/index.html.erb" do
   shared_examples "user profile" do
     it "renders user first name" do
       render

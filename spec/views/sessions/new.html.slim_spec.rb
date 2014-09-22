@@ -1,4 +1,4 @@
 require 'rails_helper'
 
-describe "sessions/new.html.slim", type: :view do
+describe "sessions/new.html.slim" do
 end

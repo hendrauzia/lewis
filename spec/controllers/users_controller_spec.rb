@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe UsersController, type: :controller do
+describe UsersController do
   describe "GET 'invite'" do
     context "email exists" do
       it "returns http success" do

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "users/invite.html.slim", type: :view do
+describe "users/invite.html.slim" do
   it "display email" do
     parent = create(:parent)
     assign(:user, parent)

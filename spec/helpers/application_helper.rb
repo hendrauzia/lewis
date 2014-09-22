@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ApplicationHelper, type: :helper do
+describe ApplicationHelper do
   describe "#authenticated?" do
     context "not authenticated" do
       it "returns false" do

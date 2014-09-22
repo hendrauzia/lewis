@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ProfileController, type: :controller do
+describe ProfileController do
   it_behaves_like "Authenticatable"
 
   context "parent" do
