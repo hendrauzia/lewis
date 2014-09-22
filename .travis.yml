@@ -12,4 +12,5 @@ before_script:
 script: bundle exec rspec spec
 env:
   global:
+  - coveralls: true
   - secure: TROUE2OfEoMMjlfoiA54NRxwSq6//WH+Ph2LGMWtmnZvE0X5VK0uROTwi+bl3zVr9Zzq+Q5oa90iZUJdW5gBwJq8bJ0htOkNajSlTVGrhHun83T/kc2DLjgiZ2y66F8b0hnnJDSO4c75GDU2k0sZNOuHOOWqvYfE8+Q83Ah+plQ=
