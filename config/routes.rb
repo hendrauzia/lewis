@@ -3,15 +3,15 @@ Rails.application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  get 'users/invite', as: 'invite_user'
-  patch 'users/update', as: 'update_user'
+  get 'users/invite', as: :invite_user
+  patch 'users/update', as: :update_user
 
-  get 'profile/index', as: 'profile'
-  get 'profile/share', as: 'share_profile'
-  post 'profile/notify', as: 'notify_profile'
+  get 'profile/index', as: :profile
+  get 'profile/share', as: :share_profile
+  post 'profile/notify', as: :notify_profile
 
-  resources :tryouts, only: [:new, :create]
-  resources :sessions, only: [:new, :create] do
+  resources :tryouts, only: %i(new create)
+  resources :sessions, only: %i(new create) do
     collection { get :destroy, as: :destroy }
   end
 
