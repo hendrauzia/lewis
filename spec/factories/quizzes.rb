@@ -32,5 +32,9 @@ FactoryGirl.define do
     ]
     answers Hash[ "1" => "a", "2" => "c", "3" => "b" ]
     published true
+
+    trait :with_description do
+      description "Some quiz description"
+    end
   end
 end

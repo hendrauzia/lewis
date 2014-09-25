@@ -1,44 +1,32 @@
 require 'rails_helper'
 
 describe "tryouts/new.html.slim" do
-  before do
-    @quiz = build(:quiz)
-    @quiz.description = "Some quiz description in here"
+  let(:quiz)   { create :quiz, :with_description }
+  let(:tryout) { build :tryout, quiz: quiz }
 
-    assign(:quiz, @quiz)
+  before(:each) { assign :tryout, tryout }
+
+  context 'all states' do
+    before(:each) { render }
+
+    it { expect(rendered).to have_content quiz.name }
+    it { expect(rendered).to have_content quiz.description }
   end
 
-  it "renders quiz name and description" do
-    render
-    expect(rendered).to have_content(@quiz.name)
-    expect(rendered).to have_content(@quiz.description)
+  context "not signed in" do
+    before(:each) { render }
+
+    it { expect(rendered).to have_content "Email" }
+    it { expect(rendered).not_to have_content "Profile" }
   end
 
-  context "user not signed in" do
-    it "see email field" do
-      render
-      expect(rendered).to have_content("Email")
-    end
-
-    it "doesn't see profile link" do
-      render
-      expect(rendered).to_not have_content("Profile")
-    end
-  end
-
-  context "user signed in" do
+  context "signed in" do
     before do
       session[:user_id] = 999
+      render
     end
 
-    it "doesn't see email field" do
-      render
-      expect(rendered).to_not have_content("Email")
-    end
-
-    it "see profile link" do
-      render
-      expect(rendered).to have_content("Profile")
-    end
+    it { expect(rendered).not_to have_content "Email" }
+    it { expect(rendered).to have_content "Profile" }
   end
 end
