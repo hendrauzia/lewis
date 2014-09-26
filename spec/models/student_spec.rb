@@ -7,36 +7,26 @@ describe Student do
   it { is_expected.to have_many(:parents).through(:families) }
 
   describe "#discount" do
-    before do
-      @student = create(:student)
-    end
+    let(:student) { create :student }
 
     context "had no tryout" do
-      it "returns no discount" do
-        expect(@student.discount).to eq(0)
-      end
+      it { expect(student.discount).to eq(0) }
     end
 
     context "had tryout" do
-      context "1 tryout" do
-        before do
-          @tryout = create(:tryout, :average_score, student_id: @student.id)
-        end
+      let(:quiz) { create :quiz }
 
-        it "returns discount" do
-          expect(@student.discount).to eq(@tryout.discount)
-        end
+      context "1 tryout" do
+        let!(:tryout) { create :tryout, :average_score, student: student, quiz: quiz }
+
+        it { expect(student.discount).to eq tryout.discount }
       end
 
       context "more than 1 tryout" do
-        before do
-          create(:tryout, :average_score, student_id: @student.id)
-          @tryout = create(:tryout, :perfect_score, student_id: @student.id)
-        end
+        let!(:tryout_average) { create :tryout, :average_score, student: student, quiz: quiz }
+        let!(:tryout_perfect) { create :tryout, :perfect_score, student: student, quiz: quiz }
 
-        it "returns the highest discount" do
-          expect(@student.discount).to eq(@tryout.discount)
-        end
+        it { expect(student.discount).to eq tryout_perfect.discount }
       end
     end
   end
