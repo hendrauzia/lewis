@@ -1,0 +1,28 @@
+h1 Profile
+p
+  | Hai #{ @user.first_name },
+  = link_to "Sign out", destroy_sessions_path
+
+- if flash[:notice]
+  p = flash[:notice]
+
+hr
+- case @user.type
+- when "Student"
+  p Jumlah tryout yang sudah diambil: #{ @student.tryouts.count } tryout
+  p
+    | Beasiswa yang didapat: #{ @student.discount * 100 }%
+    = link_to "Bagikan ke orang tua kamu", share_profile_path
+  hr
+  h2 style="display:inline-block"
+    | Tryout
+    = link_to "Ambil Tryout", new_tryout_path
+  ol
+    - @student.tryouts.each do |tryout|
+      li Skor: #{ tryout.score } diambil pada tanggal #{ tryout.created_at }
+- when "Parent"
+  h2 Anak
+  ol
+    - @user.children.each do |child|
+      li Nama: #{ child.first_name } #{ child.last_name }, Beasiswa: #{ child.discount * 100 }%
+
