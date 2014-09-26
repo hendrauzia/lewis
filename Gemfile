@@ -46,16 +46,17 @@ gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem 'byebug'
-  gem 'rspec-rails', '~> 3.0.0'
-  gem 'rspec-collection_matchers'
-  gem 'factory_girl_rails', '~>4.0'
-  gem 'database_cleaner'
   gem 'capybara'
-  gem 'shoulda-matchers', require: false
-  gem 'launchy'
   gem "codeclimate-test-reporter", require: nil
   gem 'coveralls', require: false
+  gem 'database_cleaner'
+  gem 'factory_girl_rails', '~>4.0'
+  gem 'faker'
   gem 'guard-rspec', require: false
+  gem 'launchy'
+  gem 'rspec-rails', '~> 3.0.0'
+  gem 'rspec-collection_matchers'
+  gem 'shoulda-matchers', require: false
   gem 'terminal-notifier-guard'
 end
 

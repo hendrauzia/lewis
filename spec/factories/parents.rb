@@ -1,7 +1,4 @@
 FactoryGirl.define do
-  factory :parent do
-    email "parent@lol.lol"
-    first_name "Parent"
-    password "passsword"
+  factory :parent, parent: :user, class: Parent do
   end
 end

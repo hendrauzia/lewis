@@ -1,41 +1,34 @@
 require 'rails_helper'
 
 feature "Profile", type: :feature do
-  before do
-    @student = create(:student)
-    @parent  = create(:parent)
-    @quiz    = create(:quiz)
+  context "as a student" do
+    given!(:student) { create :student, password: "password" }
+    given!(:parent)  { create :parent }
 
-    visit new_session_path
-    fill_in "email", with: @student.email
-    fill_in "password", with: "password"
-    click_button "Login"
-  end
-
-  feature "Share", type: :feature do
-    context "email has been registered" do
-      it "display flash notification" do
-        visit share_profile_path
-        fill_in "email", with: @parent.email
-        click_button "Share"
-
-        expect(page).to have_content "Email sudah terdaftar"
-      end
+    background(:each) do
+      visit new_session_path
+      fill_in "email", with: student.email
+      fill_in "password", with: "password"
+      click_button "Login"
     end
 
-    context "email hasn't been registered" do
-      before do
-        visit share_profile_path
-        fill_in "email", with: 'not-exist@lol.lol'
+    context "I want to share" do
+      given(:email)     { Faker::Internet.email }
+      background(:each) { visit share_profile_path }
+
+      scenario "with email that has been registered" do
+        fill_in "email", with: parent.email
         click_button "Share"
+
+        expect(page).to have_content "Kamu sudah pernah share ke email tersebut"
       end
 
-      it "display flash notification" do
+      scenario "with email that hasn't been registered" do
+        fill_in "email", with: email
+        click_button "Share"
+
         expect(page).to have_content "Hasil kamu sudah di share"
-      end
-
-      it "save the record" do
-        expect(Parent.exists?(email: 'not-exist@lol.lol')).to be(true)
+        expect(Parent.exists? email: email).to be
       end
     end
   end

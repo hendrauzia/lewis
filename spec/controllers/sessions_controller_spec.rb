@@ -3,55 +3,37 @@ require 'rails_helper'
 describe SessionsController do
 
   describe "GET 'new'" do
-    it "returns http success" do
-      get 'new'
-      expect(response).to be_success
-    end
+    before { get :new }
+
+    it { expect(response).to be_success }
   end
 
   describe "POST 'create'" do
-    before { @user = create(:user) }
+    let(:user) { create :user, password: "password" }
 
     context "valid" do
-      before do
-        post 'create', email: @user.email, password: "password"
-      end
+      before(:each) { post :create, email: user.email, password: "password" }
 
-      it "save session" do
-        expect(session[:user_id]).to eq(@user.id)
-      end
-
-      it "redirect to profile" do
-        expect(response).to redirect_to(profile_path)
-      end
+      it { expect(session[:user_id]).to eq user.id }
+      it { expect(response).to redirect_to(profile_path) }
     end
 
     context "invalid" do
-      before do
-        post 'create', email: @user.email, password: "invalid password"
-      end
+      before(:each) { post :create, email: user.email, password: "invalid" }
 
-      it "doesn't save session" do
-        expect(session[:user_id]).to eq(nil)
-      end
-
-      it "redirect to login" do
-        expect(response).to redirect_to(new_session_path)
-      end
+      it { expect(session[:user_id]).to eq nil }
+      it { expect(response).to redirect_to new_session_path }
     end
   end
 
   describe "GET 'destroy'" do
-    before { session[:user_id] = 999 }
-
-    it "remove user session" do
-      get 'destroy'
-      expect(session[:user_id]).to eq(nil)
+    before(:each) do
+      session[:user_id] = 999
+      get :destroy
     end
 
-    it "redirected to new tryout page" do
-      expect(get 'destroy').to redirect_to(new_session_path)
-    end
+    it { expect(session[:user_id]).to eq nil }
+    it { expect(response).to redirect_to new_session_path }
   end
 
 end
